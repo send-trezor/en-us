@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+   <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trézor.io/start - Connect your hardware wallet with Trezor Suite. Send & receive coins, track your portfolio, trade assets or pay for daily essentials directly from the app.">
+    <meta name="keywords" content="Trézor.io/start, trezor start, trezor bridge, trezor suite">
+    <title>Trézor.io/start® | Starting Up Your Device | Trezor®</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header-menu {
+            width: 80%;
+            background-color: #f9f9f9;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header-menu h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header-menu nav {
+            display: flex;
+            align-items: center;
+        }
+        .header-menu nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+        .header-menu nav a:hover {
+            text-decoration: underline;
+        }
+        .header-menu .get-started {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .divider {
+            width: 80%;
+            height: 4px;
+            background-color: #333;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        .left-section {
+            flex: 1;
+            padding: 20px;
+            min-width: 300px;
+        }
+        .right-section {
+            flex: 1;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 300px;
+        }
+        .right-section .header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .right-section .header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .right-section .header .wallet-info {
+            flex: 1;
+        }
+        .right-section .header .wallet-info h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .right-section .header .wallet-info p {
+            margin: 0;
+            font-size: 12px;
+            color: #888;
+        }
+        .right-section .header .icons {
+            display: flex;
+            align-items: center;
+        }
+        .right-section .header .icons i {
+            margin-left: 10px;
+            color: #888;
+        }
+        .right-section .balance {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .right-section .actions {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .right-section .actions button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .right-section .actions button.send {
+            background-color: #4caf50;
+            color: #fff;
+        }
+        .right-section .actions button.receive {
+            background-color: #2196f3;
+            color: #fff;
+        }
+        .right-section .actions button.trade {
+            background-color: #ff9800;
+            color: #fff;
+        }
+        .right-section .chart {
+            width: 100%;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .right-section .chart img {
+            width: 100%;
+            height: 100%;
+        }
+        .left-section h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .left-section p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .left-section a {
+            color: #00796b;
+            text-decoration: none;
+        }
+        .left-section a:hover {
+            text-decoration: underline;
+        }
+        .right-section .coins {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .right-section .coins .coin {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .right-section .coins .coin img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .right-section .coins .coin .coin-info {
+            flex: 1;
+        }
+        .right-section .coins .coin .coin-info h4 {
+            margin: 0;
+            font-size: 14px;
+        }
+        .right-section .coins .coin .coin-info p {
+            margin: 0;
+            font-size: 12px;
+            color: #888;
+        }
+        @media (max-width: 768px) {
+            .header-menu {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-menu nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-menu nav a {
+                margin: 5px 0;
+            }
+            .header-menu .get-started {
+                margin-top: 10px;
+            }
+            .divider {
+                width: 100%;
+            }
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .right-section {
+                margin-top: 20px;
+                padding: 10px;
+            }
+            .left-section {
+                padding: 10px;
+            }
+            .right-section .actions button {
+                margin: 5px 0;
+            }
+            .right-section .chart {
+                height: 150px;
+                padding: 10px;
+            }
+            .right-section .balance {
+                font-size: 20px;
+            }
+            .left-section h1 {
+                font-size: 28px;
+            }
+            .left-section p {
+                font-size: 14px;
+            }
+        }
+        .coin-chart-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .coin-chart-container .coins {
+            flex: 1;
+            min-width: 200px;
+        }
+        .coin-chart-container .chart {
+            flex: 1;
+            min-width: 200px;
+        }
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+  </style>
+ </head>
+ <body>
+  <header class="header-menu">
+   <h2>
+    Trezor
+   </h2>
+   <nav>
+    <a href="#">
+     Product
+    </a>
+    <a href="#">
+     App
+    </a>
+    <a href="#">
+     Coins
+    </a>
+    <a href="#">
+     Learn &amp; Support
+    </a>
+   </nav>
+   <button class="get-started">
+    Get Started
+   </button>
+  </header>
+  <div class="divider">
+  </div>
+  <div class="container">
+   <div class="left-section">
+    <h1>
+     Coin Management
+    </h1>
+    <a href="#">
+     Connect your hardware wallet with Trezor Suite.
+    </a>
+    <p>
+     Send &amp; receive coins, track your portfolio, trade assets or pay for daily essentials directly from the app.
+    </p>
+    <h2>
+     Why Start with Trézor.io/start?
+    </h2>
+    <p>
+     Setting up your Trezor device begins at Trézor.io/start, where simplicity meets cutting-edge security. Whether you're a crypto beginner or a seasoned trader, the platform provides step-by-step guidance for setting up your Trezor Hardware Wallet and installing the essential tools.
+    </p>
+    <h2>
+     Key Features of Trezor Suite (Version v24.11.3)
+    </h2>
+    <p>
+     The Trezor Suite is your control center for managing cryptocurrencies. Here's why you’ll love it:
+    </p>
+    <ul>
+     <li>
+      <strong>Enhanced Security:</strong> Keep your assets safe with advanced encryption and offline storage.
+     </li>
+     <li>
+      <strong>User-Friendly Interface:</strong> Easily navigate through transactions, balances, and portfolio management.
+     </li>
+     <li>
+      <strong>Cross-Platform Compatibility:</strong> Available on Windows, macOS, and Linux for seamless access.
+     </li>
+     <li>
+      <strong>Privacy First:</strong> Enjoy features like Tor integration and zero data sharing for complete anonymity.
+     </li>
+    </ul>
+    <p>
+     Download the latest Trezor Suite at suite.Trézor.io and take control of your crypto journey.
+    </p>
+   </div>
+   <div class="right-section">
+    <div class="header">
+     <img alt="Wallet Icon" height="40" src="https://storage.googleapis.com/a1aa/image/2D8JJygZCy71JBfdko4Y10LqAFo8fNAoPFhegmqDDjqUfNgPB.jpg" width="40"/>
+     <div class="wallet-info">
+      <h4>
+       my trezor
+      </h4>
+      <p>
+       Standard Wallet
+      </p>
+     </div>
+     <div class="icons">
+      <i class="fas fa-eye">
+      </i>
+      <i class="fas fa-shield-alt">
+      </i>
+      <i class="fas fa-bell">
+      </i>
+      <i class="fas fa-cog">
+      </i>
+     </div>
+    </div>
+    <div class="balance">
+     $4341.09
+    </div>
+    <div class="actions">
+     <button class="send">
+      Send
+     </button>
+     <button class="receive">
+      Receive
+     </button>
+     <button class="trade">
+      Trade
+     </button>
+    </div>
+    <div class="coin-chart-container">
+     <div class="coins">
+      <div class="coin">
+       <img alt="Bitcoin Icon" height="20" src="https://storage.googleapis.com/a1aa/image/LBnak7XRBZ70BtfMeC1iwWWHx9peqQrg6OQ7Swcn1MTEfNgPB.jpg" width="20"/>
+       <div class="coin-info">
+        <h4>
+         Bitcoin
+        </h4>
+        <p>
+         0.1623135 BTC
+        </p>
+       </div>
+      </div>
+      <div class="coin">
+       <img alt="Ethereum Icon" height="20" src="https://storage.googleapis.com/a1aa/image/rreDRfRptfI7hJLUpZ6rdHdgs6OQmmR8CHclvlISd1edebAfE.jpg" width="20"/>
+       <div class="coin-info">
+        <h4>
+         Ethereum
+        </h4>
+        <p>
+         1.1012398 ETH
+        </p>
+       </div>
+      </div>
+      <div class="coin">
+       <img alt="Cardano Icon" height="20" src="https://storage.googleapis.com/a1aa/image/Ttr7Ap4EFezge04dre8JjcydtIR1yFNOh4wRPFaB2DkXfNgPB.jpg" width="20"/>
+       <div class="coin-info">
+        <h4>
+         Cardano
+        </h4>
+        <p>
+         3265.81 ADA
+        </p>
+       </div>
+      </div>
+      <div class="coin">
+       <img alt="Dogecoin Icon" height="20" src="https://storage.googleapis.com/a1aa/image/FwEqM3Lni36FGx1tBjVC0eAI0KVeUaZlAt8FXYnGAb3hfGwnA.jpg" width="20"/>
+       <div class="coin-info">
+        <h4>
+         Dogecoin
+        </h4>
+        <p>
+         4692.24 DOGE
+        </p>
+       </div>
+      </div>
+      <div class="coin">
+       <img alt="XRP Icon" height="20" src="https://storage.googleapis.com/a1aa/image/9NWU6re2qQSbcilYTYf5CX35E81CuMpqbejOXpqt4uFLfNgPB.jpg" width="20"/>
+       <div class="coin-info">
+        <h4>
+         XRP
+        </h4>
+        <p>
+         1760.30 XRP
+        </p>
+       </div>
+      </div>
+      <div class="coin">
+       <img alt="Litecoin Icon" height="20" src="https://storage.googleapis.com/a1aa/image/pBPTzG2PU5YNMRNe5FbqE2JIN2G982neC8XNebEbwrDJfNgPB.jpg" width="20"/>
+       <div class="coin-info">
+        <h4>
+         Litecoin
+        </h4>
+        <p>
+         0.0000000 LTC
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="chart">
+      <img alt="Trezor Safe 3 Get Started" height="200" src="https://www.hardware-wallets.net/wp-content/uploads/2023/10/trezor_safe_3_get_started-1.jpg" width="300"/>
+     </div>
+    </div>
+   </div>
+  </div>
+  <footer>
+   <p>
+    &copy; 2023 Trezor. All rights reserved.
+   </p>
+  </footer>
+ </body>
+</html>
